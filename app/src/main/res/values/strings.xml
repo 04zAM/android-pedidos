@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">UTNPEDIDOS001</string>
+    <string name="hint_user">User</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">Login</string>
+    <string name="title_pedidos">Pedidos</string>
+    <string name="title_clientes">Clientes</string>
+    <string name="title_productos">Productos</string>
+    <string name="hint_codigo">Codigo</string>
+    <string name="hint_descripcion">Descripcion</string>
+    <string name="hint_precio">Precio</string>
+
+    <string name="lbl_cliente">Cliente</string>
+    <string name="lbl_producto">Producto</string>
+    <string name="hint_cantidad">Cantidad</string>
+    <string name="btn_agregar">Agregar</string>
+    <string name="btn_editar">Editar</string>
+    <string name="btn_eliminar">Eliminar</string>
+    <string name="btn_guardar">Guardar</string>
+
+</resources>
