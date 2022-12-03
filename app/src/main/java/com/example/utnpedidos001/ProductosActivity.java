@@ -26,6 +26,7 @@ public class ProductosActivity extends AppCompatActivity {
     FloatingActionButton nuevoProducto;
     RecyclerView recyclerView;
     List<Producto> listaProductos;
+    Producto[] productos;
     AdaptadorProductos adaptadorProductos;
     Productos controller;
 
@@ -38,6 +39,7 @@ public class ProductosActivity extends AppCompatActivity {
         nuevoProducto = findViewById(R.id.btnNuevoProducto);
         recyclerView = findViewById(R.id.listaProductos);
 
+        controller = new Productos(this);
         listaProductos = new ArrayList<>();
         adaptadorProductos = new AdaptadorProductos(listaProductos);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -49,10 +51,25 @@ public class ProductosActivity extends AppCompatActivity {
 
     public void refrescarLista() {
         if (adaptadorProductos == null) return;
-        listaProductos = Arrays.asList(controller.selectAllProductos());
+        if (controller.selectAllProductos() != null){
+            listaProductos = Arrays.asList(controller.selectAllProductos());
+        }else{
+            Producto p = new Producto();
+            p.codigo = "000";
+            p.descripcion = "No hay registros";
+            p.precio = 0;
+            listaProductos.add(p);
+        }
         adaptadorProductos.setListaProductos(listaProductos);
         adaptadorProductos.notifyDataSetChanged();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refrescarLista();
+    }
+
 
     public void cmdNuevoProducto_onClick (View v){
         Intent intent = new Intent(this,ProductoActivity.class);

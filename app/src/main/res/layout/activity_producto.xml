@@ -41,6 +41,7 @@
         android:id="@+id/btnAgregarProducto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="cmdInsertPro_OnClick"
         android:text="@string/btn_agregar" />
 
     <Button

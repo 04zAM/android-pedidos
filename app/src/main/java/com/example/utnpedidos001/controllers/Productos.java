@@ -13,7 +13,9 @@ public class Productos {
     private AdminDB Admin;
     private SQLiteDatabase Db;
 
-    public Productos(Context context, String nombreBD, int version) {
+    public Productos(Context context) {
+        String nombreBD = "pedidosUTN";
+        int version = 1;
         Admin = new AdminDB(context, nombreBD, null, version);
     }
 
@@ -52,10 +54,9 @@ public class Productos {
         return p;
     }
 
-    public Producto insertProducto(int id, String codigo, String descripcion, float precio) {
+    public Producto insertProducto(String codigo, String descripcion, float precio) {
         Db = Admin.getWritableDatabase();
         ContentValues Registro = new ContentValues();
-        Registro.put("prod_id", id);
         Registro.put("codigo", codigo);
         Registro.put("descripcion", descripcion);
         Registro.put("precio", precio);
@@ -66,7 +67,6 @@ public class Productos {
         }
         Db.close();
         Producto p = new Producto();
-        p.prod_id = id;
         p.codigo = codigo;
         p.descripcion = descripcion;
         p.precio = precio;
